@@ -38,7 +38,7 @@
 			// Simula un clic en el enlace para iniciar la descarga
 			setTimeout(function() {
 				enlace.click();
-			  }, 100);			
+			  }, 1000);			
 			
 			// Elimina el enlace del documento
 			document.body.removeChild(enlace);
