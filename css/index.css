@@ -88,6 +88,9 @@
 		background-image: url('../images/bg-mobile.png');
 	}	
 
+}
+
+@media (max-width: 600px) {	
 	#botonDescargar {
 		display: none;
 	}
