@@ -71,6 +71,14 @@
 	white-space: nowrap;
 }
 
+#botonDescargar {
+	display: block;
+}
+
+#mensaje {
+	display: none;
+}
+
 @media (max-width: 544px) {
 	.my-modal-content {
 		margin: 0 10px;
@@ -79,4 +87,13 @@
 	.fondo {
 		background-image: url('../images/bg-mobile.png');
 	}	
+
+	#botonDescargar {
+		display: none;
+	}
+
+	#mensaje {
+		display: inline;
+	}
+
 }
