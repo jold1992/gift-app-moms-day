@@ -2,6 +2,28 @@ body {
 	overflow: hidden;
 }
 
+.fondo {
+	background-image: url('../images/bg.png');
+	background-size: cover;
+	background-position: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.capa-oscura {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2); /* ajusta el color y la opacidad según tus necesidades */
+	z-index: -1;
+  }
+
 .main {
 	width: 100%;
 	height: 100%;
@@ -35,6 +57,15 @@ body {
 	cursor: pointer;
 }
 
+.upButton {
+	width: 100%;
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
 .arrow {
 	position: absolute;
 	bottom: 50px;
@@ -42,6 +73,16 @@ body {
 	-webkit-transform: translate(-50%, 0);
 	-moz-transform: translate(-50%, 0);
 	transform: translate(-50%, 0);
+}
+
+.upArrow {
+	cursor: pointer;
+	position: absolute;
+}
+
+.up-arrow {
+	transform: rotate(180deg);
+	cursor: pointer;
 }
 
 .index-link {
@@ -65,9 +106,13 @@ body {
 @media (max-width: 544px) {
 	.arrow {
 		bottom: 10px;
-	}
+	}	
 
 	.message-item {
 		font-size: 28px;
 	}
+
+	.fondo {
+		background-image: url('../images/bg-mobile.png');
+	}	
 }

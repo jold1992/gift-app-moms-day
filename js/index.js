@@ -1,4 +1,8 @@
 (function () {
+
+	let contenedor;
+	let imagen;	
+
 	if (document.readyState !== 'loading') {
 		configureFormCompletionHandler();
 	} else {
@@ -18,6 +22,27 @@
 				openLinkModal(shortenedUrl, data);
 			});
 		});
+
+		const botonDescargar = document.getElementById("botonDescargar");
+		// Agrega un event listener al botón
+		botonDescargar.addEventListener("click", function() {		
+			console.log("ENTRAAAAAA")
+
+			// Crea un enlace temporal
+			var enlace = document.createElement("a");
+			enlace.href = imagen.src;
+			enlace.download = "gift-mom-qr-code.png"; // Nombre del archivo que se descargará
+			enlace.style.display = "none";
+			
+			// Agrega el enlace al documento
+			document.body.appendChild(enlace);
+			
+			// Simula un clic en el enlace para iniciar la descarga
+			enlace.click();
+			
+			// Elimina el enlace del documento
+			document.body.removeChild(enlace);
+		});	
 	}
 
 	function getDataFromForm() {
@@ -30,6 +55,14 @@
 	function generateMessageUrl(messageData) {
 		const queryString = window.btoa(JSON.stringify(messageData));
 		const momMessageUrl = window.location.href.slice(0, window.location.href.lastIndexOf('/')) + '/message.html?data=' + queryString;
+
+		const codigoQRDiv = document.getElementById('codigo-qr');
+		codigoQRDiv.innerHTML = "";
+		const codigoQR = new QRCode(codigoQRDiv, {
+		text: momMessageUrl
+		});
+
+
 		return momMessageUrl;
 	}
 
@@ -45,7 +78,7 @@
 		linkInput.value = link;
 
 		const modalTitle = document.getElementById('modalTitle');
-		modalTitle.textContent = 'Send this to ' + (data.momName || 'Mom');
+		modalTitle.textContent = 'Envía esto a ' + (data.momName || 'Mamá');
 
 		const linkModal = document.getElementById('link-modal');
 		linkModal.className = linkModal.className + ' ' + modalBackdropClass;
@@ -69,8 +102,11 @@
 			modalCloseButtons[i].addEventListener('click', closeModal);
 		}
 
+		contenedor = document.getElementById("codigo-qr");
+		imagen = contenedor.querySelector("img");		
+
 		linkModal.addEventListener('click', modalBackdropClick);
-	}
+	}	
 
 	function modalBackdropClick(e) {
 		const linkModal = document.getElementById('link-modal');
@@ -107,5 +143,6 @@
 
 	function fixedEncodeURIComponent(str) {
 		return encodeURIComponent(str).replace(/[!'()*]/g, c => '%' + c.charCodeAt(0).toString(16));
-	}
+	}	
+
 })()

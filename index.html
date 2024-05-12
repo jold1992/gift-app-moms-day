@@ -25,11 +25,12 @@
 	<meta property="faithlife:embed:aspectratio" content="1.778"/>
 	<link rel="icon" href="images/icon.png">
 
-	<title>Moms</title>
+	<title>Mamá</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="css/common.css" rel="stylesheet">
 	<link href="css/index.css" rel="stylesheet">
 	<script type="text/javascript" src="js/index.js" async></script>
+	<script src="js/qrcode.min.js"></script>
 
 	<script>
 		if ('serviceWorker' in navigator) {
@@ -41,32 +42,34 @@
 	</script>
 </head>
 <body>
+	<div class="fondo"></div>
+	<div class="capa-oscura"></div>
 	<div class="main">
-		<div>
-			<h1>Mother's Day Message</h1>
+		<div class="header">
+			<h1 style="text-align: center;">Feliz día mamá 💝</h1>
 			<p>
-				Write a Mother's Day message to your mom!
-				<br>
-				Fill out the form below, ​click "Get link," and send it to your mom for a fun Mother's Day note!
-				<br><br>
+				No hay palabras suficientes para expresar todo lo que sentimos por mamá, pero podemos hacerle saber nuestro cariño.
+			</p>
+			<p>
+				Completa todos los campos del formulario y al final recibirás un enlace para compartirlo con ella.				
 			</p>
 		</div>
 		<form class="mom-form">
 			<div class="form-group">
-				<label for="momName">What do you call your mom?</label>
-				<input type="text" class="form-control" id="momName" placeholder="e.g. Mommy, Mama, Big Cheese">
+				<label for="momName">¿Cómo llamas a tu mamá?</label>
+				<input type="text" class="form-control" id="momName" placeholder="Ejm: Mami Tere, Puchi...">
 			</div>
 
 			<div class="form-group">
-				<label for="birthdate">When were you born?</label>
-				<input type="text" class="form-control" id="birthdate" placeholder="MM/DD/YYYY">
+				<label for="birthdate">¿Qué admiras de tu mamá?</label>
+				<input type="text" class="form-control" id="birthdate" required placeholder="Ejm: ser valiente, trabajadora...">
 			</div>
 
 			<div class="form-group">
-				<label for="faveThing">What's your fave thing ending in "ing" to do with your mom?</label>
-				<input type="text" class="form-control" id="faveThing" placeholder="e.g. gardening, running, sipping margs">
+				<label for="faveThing">Escribe una frase que le quieras dedicar a mamá:</label>
+				<input type="text" class="form-control" required id="faveThing" placeholder="Ejm: Lo eres todo mamá.">
 			</div>
-			<button type="submit" class="btn btn-default" id="generate-message-button" title="Get link to the message for your mom">Get link</button>
+			<button type="submit" class="btn btn-default" id="generate-message-button" title="Obtener link para enviarlo a mamá">Obtener link</button>
 		</form>
 	</div>
 
@@ -76,12 +79,19 @@
 				<button type="button" class="close close-button" style="padding-top:3px;">&times;</button>
 				<h4 id="modalTitle" class="modal-title overflow-ellipsis"></h4>
 			</div>
-			<div class="modal-body my-modal-body">
-				<input type="text" id="linkContainer" class="form-control link-input" aria-label="mom link" readonly>
-				<button type="button" id="copyButton" class="btn btn-primary">Copy</button>
+			<div class="modal-body my-modal-body" style="display: grid;">
+				<div style="display: flex; padding-bottom: 10px;">
+					<input type="text" id="linkContainer" class="form-control link-input" aria-label="mom link" readonly>
+					<button type="button" id="copyButton" class="btn btn-primary">Copiar</button>
+				</div>
+
+				<div style="display: flex; flex-direction: column; width: 100%; align-items: center;">
+					<div id="codigo-qr" style="padding: 5px;"></div>
+					<button class="btn btn-success" id="botonDescargar" type="button">Descargar QR</button>
+				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default close-button">Close</button>
+				<button type="button" class="btn btn-default close-button">Cerrar</button>
 			</div>
 		</div>
 	</div>

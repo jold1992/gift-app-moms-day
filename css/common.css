@@ -9,17 +9,11 @@
 
 body {
 	background-color: rgb(255, 193, 166);
-	background-image: url('../images/bg.png');
+	/*background-image: url('../images/bg.png');
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: cover;*/
 	width: 100vw;
 	height: 100vh;
 	margin: 0;
-}
-
-@media (max-width: 544px) {
-	body {
-		background-image: url('../images/bg-mobile.png');
-	}
 }

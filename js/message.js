@@ -1,11 +1,12 @@
 (function () {
 	const messageItemClass = 'message-item';
 	const messageCreators = [
-		messageData => 'Dear ' + (messageData.momName || 'Mom') + ',',
-		() => "Happy Mother's Day! This day is for you.",
-		messageData => 'On ' + (messageData.birthdate || 'my birthday') + ', you became my ' + (messageData.momName || 'Mom') + '.',
-		messageData => 'From that day forward, I have loved spending time with you, learning from you, and ' + (messageData.faveThing || 'being') + ' with you.',
-		() => 'I love you, Mom. ❤️',
+		messageData => 'Feliz día, querida ' + (messageData.momName || 'mamá') + ',',
+		() => 'Hoy celebramos todo lo que eres y todo lo que haces por nosotros. 🎊',
+		() => 'Tu amor y dedicación son el pilar de nuestra familia.',
+		messageData => 'Admiro mucho tu' + (' ' + messageData.birthdate || 's superpoderes') + ', eres excepcional.',
+		messageData => (messageData.faveThing || 'Lo eres todo para mi'),
+		() => 'Te amo, Mamá. ❤️',
 	];
 
 	let currentMessageIndex = 0;
@@ -22,6 +23,7 @@
 		});
 
 		document.getElementById('downArrowButton').addEventListener('click', handleMoveToNextMessage);
+		document.getElementById('upArrowButton').addEventListener('click', handleMoveToPrevMessage);
 		document.addEventListener('keydown', e => {
 			if (e.key === 'ArrowUp') {
 				handleMoveToNextMessage('up');
@@ -65,6 +67,59 @@
 			downArrow.style.display = 'inline-block';
 			indexLink.style.display = 'none';
 			indexLink.style.opacity = 0;
+		}	
+
+		const upArrow = document.getElementById('upButton');
+		if (currentMessageIndex === 0) {
+			console.log('entraaaa')
+			upArrow.style.display = 'none';			
+		} else {
+			upArrow.style.display = 'flex';
+		}
+
+
+
+		const currentMessage = messages[currentMessageIndex];
+		TweenLite.to(
+			document.querySelector('.main'),
+			1.5,
+			{
+				scrollTo: currentMessage.offsetTop,
+				ease: Power3.easeInOut,
+			}
+		);
+	}
+
+	function handleMoveToPrevMessage(direction) {
+		clearTimeout(linkTimeout);
+
+		const messages = document.getElementsByClassName(messageItemClass);
+		if (direction === 'down') {
+			currentMessageIndex = Math.min(messages.length - 1, currentMessageIndex + 1);			
+		} else {
+			currentMessageIndex = Math.max(0, currentMessageIndex - 1);
+		}
+
+		const upArrow = document.getElementById('upButton');
+		const indexLink = document.getElementById('indexLink');
+		if (currentMessageIndex === 0) {
+			console.log('entraaaa')
+			upArrow.style.display = 'none';
+			indexLink.style.display = 'inline-block';
+			linkTimeout = setTimeout(() => {
+				indexLink.style.opacity = 1;
+			}, 2000);
+		} else {
+			upArrow.style.display = 'flex';
+			indexLink.style.display = 'none';
+			indexLink.style.opacity = 0;
+		}	
+
+		const downArrow = document.getElementById('downArrowButton');		
+		if (currentMessageIndex === messages.length - 1) {
+			downArrow.style.display = 'none';			
+		} else {
+			downArrow.style.display = 'inline-block';
 		}
 
 		const currentMessage = messages[currentMessageIndex];

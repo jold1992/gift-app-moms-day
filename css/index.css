@@ -1,3 +1,25 @@
+.fondo {
+	background-image: url('../images/bg.png');
+	background-size: cover;
+	background-position: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.capa-oscura {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2); /* ajusta el color y la opacidad según tus necesidades */
+	z-index: -1;
+  }
+
 .main {
 	display: flex;
 	justify-content: center;
@@ -20,6 +42,8 @@
 	width: 150px;
 	align-self: center;
 }
+
+
 
 .my-modal-backdrop {
 	background: rgba(0,0,0,0.5);
@@ -50,5 +74,9 @@
 @media (max-width: 544px) {
 	.my-modal-content {
 		margin: 0 40px;
+	}
+
+	.fondo {
+		background-image: url('../images/bg-mobile.png');
 	}
 }
