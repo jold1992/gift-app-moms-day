@@ -4,7 +4,7 @@
 		messageData => 'Feliz día, querida ' + (messageData.momName || 'mamá') + ',',
 		() => 'Hoy celebramos todo lo que eres y todo lo que haces por nosotros. 🎊',
 		() => 'Tu amor y dedicación son el pilar de nuestra familia.',
-		messageData => 'Admiro mucho tu' + (' ' + messageData.birthdate || 's superpoderes') + ', eres excepcional.',
+		messageData => 'Admiro mucho que eres' + (' ' + messageData.birthdate || ' capaz de todo') + ', eres excepcional.',
 		messageData => (messageData.faveThing || 'Lo eres todo para mi'),
 		() => 'Te amo, Mamá. ❤️',
 	];
