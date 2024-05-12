@@ -29,16 +29,14 @@
 			// Crea un enlace temporal
 			var enlace = document.createElement("a");		
 			enlace.href = imagen.src;
-			enlace.download = "gift-mom-qr-code.png"; // Nombre del archivo que se descargará
-			enlace.style.display = "none";
+			enlace.download = "gift-mom-qr-code.png"; // Nombre del archivo que se descargará			
 			
 			// Agrega el enlace al documento
 			document.body.appendChild(enlace);
 			
-			// Simula un clic en el enlace para iniciar la descarga
-			setTimeout(function() {
-				enlace.click();
-			  }, 1000);			
+			// Simula un clic en el enlace para iniciar la descarga			
+			enlace.click();
+			  			
 			
 			// Elimina el enlace del documento
 			document.body.removeChild(enlace);
