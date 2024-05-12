@@ -25,11 +25,9 @@
 
 		const botonDescargar = document.getElementById("botonDescargar");
 		// Agrega un event listener al botón
-		botonDescargar.addEventListener("click", function() {		
-			console.log("ENTRAAAAAA")
-
+		botonDescargar.addEventListener("click", function() {					
 			// Crea un enlace temporal
-			var enlace = document.createElement("a");
+			var enlace = document.createElement("a");		
 			enlace.href = imagen.src;
 			enlace.download = "gift-mom-qr-code.png"; // Nombre del archivo que se descargará
 			enlace.style.display = "none";
